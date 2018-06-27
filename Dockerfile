@@ -2,6 +2,8 @@ FROM microsoft/dotnet:2.1-sdk
 
 MAINTAINER <vk@alphacloud.net>
 
+RUN dotnet tool install --global dotnet-outdated
+
 COPY DependencyCache.csproj /work/cache/
 
 RUN cd /work/cache \
