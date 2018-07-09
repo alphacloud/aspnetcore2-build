@@ -59,6 +59,7 @@ RUN cd /work/cache \
     && dotnet add package Serilog.Sinks.File \
     && dotnet add package StackExchange.Redis \
     && dotnet add package Swashbuckle.AspNetCore \
+    && dotnet add package SwashBuckle.AspNetCore.Examples \
     && dotnet add package System.Buffers \
     && dotnet add package System.ComponentModel.Annotations \
     && dotnet add package System.ComponentModel.Primitives \
