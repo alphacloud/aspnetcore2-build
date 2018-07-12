@@ -38,7 +38,6 @@ RUN cd /work/cache \
     && dotnet add package MediatR.Extensions.Microsoft.DependencyInjection \
     && dotnet add package MessagePack \
     && dotnet add package MessagePackAnalyzer \
-    && dotnet add package Microsoft.AspNetCore.App \
     && dotnet add package Microsoft.AspNetCore.Mvc.Testing \
     && dotnet add package Microsoft.AspNetCore.SignalR \
     && dotnet add package Microsoft.AspNetCore.SignalR.Common \

@@ -6,6 +6,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
     <PackageReference Include="dotnet-xunit" Version="2.4.0-*" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.*" />
   </ItemGroup>
 
 </Project>
