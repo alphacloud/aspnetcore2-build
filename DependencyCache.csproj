@@ -4,8 +4,8 @@
     <TargetFrameworks>netcoreapp2.1;netstandard2.0</TargetFrameworks>
   </PropertyGroup>
 
-  <ItemGroup>
-    <!-- <DotNetCliToolReference Include="dotnet-xunit" Version="2.4.0-beta.1.build3958" /> -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <PackageReference Include="dotnet-xunit" Version="2.4.0-*" />
   </ItemGroup>
 
 </Project>

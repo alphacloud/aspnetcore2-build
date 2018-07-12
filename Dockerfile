@@ -7,11 +7,14 @@ RUN dotnet tool install --global dotnet-outdated
 COPY DependencyCache.csproj /work/cache/
 
 RUN cd /work/cache \
-    && dotnet add package dotnet-xunit -v 2.4.0-* \
+    && dotnet add package AngleSharp \
     && dotnet add package AutoFixture \
     && dotnet add package AutoMapper \
     && dotnet add package Autofac \
     && dotnet add package Autofac.Extensions.DependencyInjection \
+    && dotnet add package Autofac.Extras.DynamicProxy \
+    && dotnet add package Autofac.Extras.Moq \
+    && dotnet add package Autofac.Extras.Quartz \
     && dotnet add package Automapper \
     && dotnet add package Castle.Core \
     && dotnet add package Dapper \
@@ -29,14 +32,14 @@ RUN cd /work/cache \
     && dotnet add package MassTransit.MongoDb \
     && dotnet add package MassTransit.RabbitMQ \
     && dotnet add package MassTransit.Redis \
-    && dotnet add package MassTransit.RedisSagas \
-    && dotnet add package MassTransit.RedisSagas.RedLock \
     && dotnet add package MassTransit.SerilogIntegration -v 5.* \
     && dotnet add package MassTransit.TestFramework \
     && dotnet add package MediatR \
     && dotnet add package MediatR.Extensions.Microsoft.DependencyInjection \
     && dotnet add package MessagePack \
     && dotnet add package MessagePackAnalyzer \
+    && dotnet add package Microsoft.AspNetCore.App \
+    && dotnet add package Microsoft.AspNetCore.Mvc.Testing \
     && dotnet add package Microsoft.AspNetCore.SignalR \
     && dotnet add package Microsoft.AspNetCore.SignalR.Common \
     && dotnet add package Microsoft.AspNetCore.SignalR.Protocols.Json \
@@ -44,10 +47,15 @@ RUN cd /work/cache \
     && dotnet add package Microsoft.CSharp \
     && dotnet add package Microsoft.CodeAnalysis.CSharp \
     && dotnet add package Microsoft.Extensions.Caching.Memory \
+    && dotnet add package Microsoft.Extensions.Http.Polly \
     && dotnet add package Microsoft.IO.RecyclableMemoryStream \
     && dotnet add package MongoDB.Driver \
     && dotnet add package Newtonsoft.Json \
     && dotnet add package Polly \
+    && dotnet add package Polly.Caching.IDistributedCache \
+    && dotnet add package Polly.Caching.MemoryCache \
+    && dotnet add package Polly.Extensions.Http \
+    && dotnet add package Quartz \
     && dotnet add package RabbitMQ \
     && dotnet add package RedLock.net \
     && dotnet add package RedLock.net.StrongName \
@@ -58,8 +66,8 @@ RUN cd /work/cache \
     && dotnet add package Serilog.Sinks.ColoredConsole \
     && dotnet add package Serilog.Sinks.File \
     && dotnet add package StackExchange.Redis \
-    && dotnet add package Swashbuckle.AspNetCore \
     && dotnet add package SwashBuckle.AspNetCore.Examples \
+    && dotnet add package Swashbuckle.AspNetCore \
     && dotnet add package System.Buffers \
     && dotnet add package System.ComponentModel.Annotations \
     && dotnet add package System.ComponentModel.Primitives \
@@ -81,3 +89,8 @@ RUN cd /work/cache \
     && cat /work/cache/DependencyCache.csproj \
     && cd / \
     && rm -rf /work/cache/*
+
+#    && dotnet add package MassTransit.RedisSagas \
+#    && dotnet add package MassTransit.RedisSagas.RedLock \
+    
+RUN dotnet-outdated
