@@ -87,9 +87,11 @@ RUN cd /work/cache \
     && dotnet restore \
     && cat /work/cache/DependencyCache.csproj \
     && cd / \
-    && rm -rf /work/cache/*
+    && rm -rf /work/cache/* \
+    && echo "# Add .Net Core tools" >> ~/.bash_profile \
+    && echo "export PATH=\"\$PATH:/root/.dotnet/tools\"" >> ~/.bash_profile \
+    && cat ~/.bash_profile 
 
 #    && dotnet add package MassTransit.RedisSagas \
 #    && dotnet add package MassTransit.RedisSagas.RedLock \
-    
-RUN dotnet-outdated
+
