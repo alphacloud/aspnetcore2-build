@@ -17,6 +17,7 @@ RUN cd /work/cache \
     && dotnet add package Autofac.Extras.Quartz \
     && dotnet add package Automapper \
     && dotnet add package Castle.Core \
+    && dotnet add package Confluent.Kafka \
     && dotnet add package Dapper \
     && dotnet add package FluentAssertions \
     && dotnet add package FluentValidation \
@@ -49,6 +50,7 @@ RUN cd /work/cache \
     && dotnet add package Microsoft.Extensions.Http.Polly \
     && dotnet add package Microsoft.IO.RecyclableMemoryStream \
     && dotnet add package MongoDB.Driver \
+    && dotnet add package NHibernate \
     && dotnet add package Newtonsoft.Json \
     && dotnet add package Polly \
     && dotnet add package Polly.Caching.IDistributedCache \
@@ -82,6 +84,7 @@ RUN cd /work/cache \
     && dotnet add package System.Threading.Tasks.Extensions \
     && dotnet add package System.ValueTuple \
     && dotnet add package System.Xml.XmlSerializer \
+    && dotnet add package librdkafka.redist \
     && dotnet add package xunit -v 2.4.0-* \
     && dotnet add package xunit.runner.visualstudio -v 2.4.0-* \
     && dotnet restore \
@@ -90,7 +93,6 @@ RUN cd /work/cache \
     && rm -rf /work/cache/* \
     && echo "# Add .Net Core tools" >> ~/.bash_profile \
     && echo "export PATH=\"\$PATH:/root/.dotnet/tools\"" >> ~/.bash_profile \
-    && cat ~/.bash_profile 
 
 #    && dotnet add package MassTransit.RedisSagas \
 #    && dotnet add package MassTransit.RedisSagas.RedLock \
