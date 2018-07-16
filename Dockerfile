@@ -2,7 +2,8 @@ FROM microsoft/dotnet:2.1-sdk
 
 MAINTAINER <vk@alphacloud.net>
 
-RUN dotnet tool install --global dotnet-outdated
+RUN dotnet tool install --global dotnet-outdated \
+    && dotnet tool install --global nukeeper
 
 COPY DependencyCache.csproj /work/cache/
 
