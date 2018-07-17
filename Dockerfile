@@ -8,6 +8,13 @@ RUN dotnet tool install --global dotnet-outdated \
 COPY DependencyCache.csproj /work/cache/
 
 RUN cd /work/cache \
+    && dotnet add package AWSSDK.Core \
+    && dotnet add package AWSSDK.Extensions.NETCore.Setup \
+    && dotnet add package AWSSDK.IdentityManagement \
+    && dotnet add package AWSSDK.KeyManagementService \
+    && dotnet add package AWSSDK.S3 \
+    && dotnet add package AWSSDK.SQS \
+    && dotnet add package AWSSDK.SimpleNotificationService \
     && dotnet add package AngleSharp \
     && dotnet add package AutoFixture \
     && dotnet add package AutoMapper \
