@@ -86,8 +86,8 @@ RUN cd /work/cache \
     && dotnet add package System.ValueTuple \
     && dotnet add package System.Xml.XmlSerializer \
     && dotnet add package librdkafka.redist \
-    && dotnet add package xunit -v 2.4.0-* \
-    && dotnet add package xunit.runner.visualstudio -v 2.4.0-* \
+    && dotnet add package xunit \
+    && dotnet add package xunit.runner.visualstudio \
     && dotnet restore \
     && cat /work/cache/DependencyCache.csproj \
     && cd / \
