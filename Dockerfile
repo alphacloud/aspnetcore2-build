@@ -2,11 +2,19 @@ FROM microsoft/dotnet:2.1-sdk
 
 MAINTAINER <vk@alphacloud.net>
 
-RUN dotnet tool install --global dotnet-outdated
+RUN dotnet tool install --global dotnet-outdated \
+    && dotnet tool install --global nukeeper
 
 COPY DependencyCache.csproj /work/cache/
 
 RUN cd /work/cache \
+    && dotnet add package AWSSDK.Core \
+    && dotnet add package AWSSDK.Extensions.NETCore.Setup \
+    && dotnet add package AWSSDK.IdentityManagement \
+    && dotnet add package AWSSDK.KeyManagementService \
+    && dotnet add package AWSSDK.S3 \
+    && dotnet add package AWSSDK.SQS \
+    && dotnet add package AWSSDK.SimpleNotificationService \
     && dotnet add package AngleSharp \
     && dotnet add package AutoFixture \
     && dotnet add package AutoMapper \
@@ -17,6 +25,7 @@ RUN cd /work/cache \
     && dotnet add package Autofac.Extras.Quartz \
     && dotnet add package Automapper \
     && dotnet add package Castle.Core \
+    && dotnet add package Confluent.Kafka \
     && dotnet add package Dapper \
     && dotnet add package FluentAssertions \
     && dotnet add package FluentValidation \
@@ -38,7 +47,6 @@ RUN cd /work/cache \
     && dotnet add package MediatR.Extensions.Microsoft.DependencyInjection \
     && dotnet add package MessagePack \
     && dotnet add package MessagePackAnalyzer \
-    && dotnet add package Microsoft.AspNetCore.App \
     && dotnet add package Microsoft.AspNetCore.Mvc.Testing \
     && dotnet add package Microsoft.AspNetCore.SignalR \
     && dotnet add package Microsoft.AspNetCore.SignalR.Common \
@@ -50,6 +58,7 @@ RUN cd /work/cache \
     && dotnet add package Microsoft.Extensions.Http.Polly \
     && dotnet add package Microsoft.IO.RecyclableMemoryStream \
     && dotnet add package MongoDB.Driver \
+    && dotnet add package NHibernate \
     && dotnet add package Newtonsoft.Json \
     && dotnet add package Polly \
     && dotnet add package Polly.Caching.IDistributedCache \
@@ -83,14 +92,16 @@ RUN cd /work/cache \
     && dotnet add package System.Threading.Tasks.Extensions \
     && dotnet add package System.ValueTuple \
     && dotnet add package System.Xml.XmlSerializer \
-    && dotnet add package xunit -v 2.4.0-* \
-    && dotnet add package xunit.runner.visualstudio -v 2.4.0-* \
+    && dotnet add package librdkafka.redist \
+    && dotnet add package xunit \
+    && dotnet add package xunit.runner.visualstudio \
     && dotnet restore \
     && cat /work/cache/DependencyCache.csproj \
     && cd / \
-    && rm -rf /work/cache/*
+    && rm -rf /work/cache/* \
+    && echo "# Add .Net Core tools" >> ~/.bash_profile \
+    && echo "export PATH=\"\$PATH:/root/.dotnet/tools\"" >> ~/.bash_profile \
 
 #    && dotnet add package MassTransit.RedisSagas \
 #    && dotnet add package MassTransit.RedisSagas.RedLock \
-    
-RUN dotnet-outdated
+
